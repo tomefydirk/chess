@@ -23,7 +23,7 @@ public class Table extends JPanel{
                 if((c+r) %2==0){
                     g2D.setColor(new Color(227,198,181));
                 }else{
-                    g2D.setColor(new Color(2,3,5,200));
+                    g2D.setColor(new Color(2,3,51,180));
                 }
                 g2D.fillRect(c*cell_size, r*cell_size, cell_size, cell_size);
             }
