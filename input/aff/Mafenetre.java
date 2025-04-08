@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import fonction.Piece;
+
 public class Mafenetre extends JFrame{
     Table t;
     Formulaire f;

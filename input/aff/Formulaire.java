@@ -65,6 +65,7 @@ public class Formulaire  extends JPanel{
             System.out.println("piece : " + valpiece);
             System.out.println("Couleur : " + valCouleur);
             eror=false;
+          
             if(!t.empl.get_est_pris(valX, valY) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
              
                 t.empl.set_Empl(valX, valY, true, new Piece(valpiece, valCouleur));
@@ -73,6 +74,8 @@ public class Formulaire  extends JPanel{
             }
             if(eror){
                 make_eror_message();
+            }else{
+                destroy_eror_message();
             }
           
            
@@ -95,10 +98,28 @@ public class Formulaire  extends JPanel{
         add(text_panel);
 
     }
-    void make_eror_message(){
-        JPanel text_panel=new JPanel();
-        text_panel.add(new JLabel("Erreur de l'emplacement ou nombre de pièce maximale atteint"));
-        add(text_panel);
+    void make_eror_message() {
+       
+        for (Component comp : this.getComponents()) {
+            if (comp instanceof Erorpanel) {
+                return; 
+            }
+        }
+        
+        JPanel errorPanel = new Erorpanel(); 
+        add(errorPanel); 
+        revalidate();
+        repaint();   
+    }
+    void destroy_eror_message(){
+        for (Component comp : this.getComponents()) {
+            if (comp instanceof Erorpanel) { 
+                this.remove(comp); 
+                break;
+            }
+        }
+        this.revalidate(); 
+        this.repaint();
     }
     void makedoubletextfield(String nom1,String nom2,JTextField t1,JTextField t2){
         JPanel text_panel=new JPanel();

@@ -91,16 +91,16 @@ public class Quantite {
     public int general_get(char indicator){
         switch (indicator) {
             case 'k':
-                return king--;
+                return king;
                 
             case  'q':
-                return queen--;
+                return queen;
                 
             case 'c':
-                return cav--;
+                return cav;
                 
             case 'p':
-                return pion--;
+                return pion;
                
             case 'f':
                 return fou;
