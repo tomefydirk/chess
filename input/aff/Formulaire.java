@@ -2,14 +2,18 @@ package aff;
 import java.awt.*;
 
 import javax.swing.*;
+
+import fonction.Empl;
+import fonction.Piece;
 public class Formulaire  extends JPanel{
     JTextField x,y;
     JComboBox piece;
     JComboBox couleur;
     
-    Empl empl;
-    public Formulaire(){
-        String[] f={"caca","popo"};
+
+    Table t;
+    public Formulaire(Table t){
+        this.t=t;
         this.setLayout(new GridLayout(6, 9));
         this.piece=new JComboBox<String>(new String[]{
             "Roi",
@@ -41,25 +45,32 @@ public class Formulaire  extends JPanel{
             return 'f';
         case "Cavalier":
             return 'c';
-        case "tour":
+        case "Tour":
             return 't';
         default:
             return '_';
        }
     }
-
     void make_bouton_appliquer(JButton bouton){
         JPanel bouton_panel=new JPanel();
         bouton.addActionListener(_ -> {
-            String valX = x.getText();
-            String valY = y.getText();
+            int valX =Integer.parseInt(x.getText()) ;
+            int valY =Integer.parseInt(y.getText()) ;
             char valpiece = hashage_piece((String) piece.getSelectedItem());
-        String valCouleur = (String) couleur.getSelectedItem();
+            String valCouleur = (String) couleur.getSelectedItem();
         
             System.out.println("X : " + valX);
             System.out.println("Y : " + valY);
             System.out.println("piece : " + valpiece);
             System.out.println("Couleur : " + valCouleur);
+            if(!t.empl.get_est_pris(valX, valY) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
+             
+                t.empl.set_Empl(valX, valY, true, new Piece(valpiece, valCouleur));
+            }else{
+                System.out.println("Erreur de l'emplacement ou nombre de pièce maximale atteint");
+            }
+          
+           
         });
         bouton_panel.add(bouton);
         add(bouton_panel);
