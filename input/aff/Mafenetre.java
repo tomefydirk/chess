@@ -15,9 +15,9 @@ public class Mafenetre extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
         this.t=new Table();
-        this.f=new Formulaire();
-        this.t.empl.set_Empl(6, 6,true, new Piece('p', "blanc"));
-        this.t.empl.set_Empl(0, 6,true, new Piece('q', "noir"));
+        
+        this.f=new Formulaire(t);
+   
       this.add(f);
       this.add(t);
         this.setVisible(true);

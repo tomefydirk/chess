@@ -3,18 +3,19 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import fonction.Empl;
+
 import fonction.Piece;
 public class Formulaire  extends JPanel{
     JTextField x,y;
     JComboBox piece;
     JComboBox couleur;
     
-
+    boolean eror;
     Table t;
     public Formulaire(Table t){
         this.t=t;
         this.setLayout(new GridLayout(6, 9));
+        this.eror=false;
         this.piece=new JComboBox<String>(new String[]{
             "Roi",
             "Reine",
@@ -63,11 +64,15 @@ public class Formulaire  extends JPanel{
             System.out.println("Y : " + valY);
             System.out.println("piece : " + valpiece);
             System.out.println("Couleur : " + valCouleur);
+            eror=false;
             if(!t.empl.get_est_pris(valX, valY) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
              
                 t.empl.set_Empl(valX, valY, true, new Piece(valpiece, valCouleur));
             }else{
-                System.out.println("Erreur de l'emplacement ou nombre de pièce maximale atteint");
+                eror=true;
+            }
+            if(eror){
+                make_eror_message();
             }
           
            
@@ -89,6 +94,11 @@ public class Formulaire  extends JPanel{
         text_panel.add(t);
         add(text_panel);
 
+    }
+    void make_eror_message(){
+        JPanel text_panel=new JPanel();
+        text_panel.add(new JLabel("Erreur de l'emplacement ou nombre de pièce maximale atteint"));
+        add(text_panel);
     }
     void makedoubletextfield(String nom1,String nom2,JTextField t1,JTextField t2){
         JPanel text_panel=new JPanel();
