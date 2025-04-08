@@ -7,6 +7,13 @@ public class Formulaire  extends JPanel{
     JComboBox type;
     
     public Formulaire(){
-         
-    }       
+        String[] f={"caca","popo"};
+        type=new JComboBox<String>(f);
+        
+        add(type);
+
+    } 
+    void makeComboBxp(String nom){
+
+    }      
 }
