@@ -88,5 +88,28 @@ public class Quantite {
                 break;
         }
     }
-
+    public int general_get(char indicator){
+        switch (indicator) {
+            case 'k':
+                return king--;
+                
+            case  'q':
+                return queen--;
+                
+            case 'c':
+                return cav--;
+                
+            case 'p':
+                return pion--;
+               
+            case 'f':
+                return fou;
+               
+            case 't':
+                return tour;
+                
+            default:
+                return -1;
+        }   
+    }
 }

@@ -14,11 +14,12 @@ public class Table extends JPanel{
 
     Empl empl;
     public Table(){
+        
        this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
     }
-
+  
     public void paintComponent(Graphics g ){
         Graphics2D g2D = (Graphics2D) g;
         for(int r=0;r<rows;r++){

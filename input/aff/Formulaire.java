@@ -17,8 +17,9 @@ public class Formulaire  extends JPanel{
     void makeComboBxp(String nom,String[] f){
         JPanel combo_bar=new JPanel();
         type=new JComboBox<String>(f);
+        combo_bar.add(new Label(nom));
         combo_bar.add(type);
-        add(new Label(nom));
+      
         add(combo_bar);
     }      
     void maketextfield(String nom,JTextField t){
