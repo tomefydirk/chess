@@ -1,5 +1,5 @@
 Position :{0,0};
-Piece{k,noir} ;
+Piece :{k,noir} ;
 break;
 
 -->

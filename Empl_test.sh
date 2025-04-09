@@ -1,4 +1,4 @@
-javac -d output input/lecture/*.java 
+javac -d output input/*/*.java 
 cd ./output
 
  java lecture.EmplLoader

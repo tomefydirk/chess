@@ -21,7 +21,7 @@ public class ButtonSave extends JButton{
                 if(empl.get_est_pris(r, c)){
                     Piece p=empl.getP(r, c);
                     val+="Position :"+"{"+c+","+r+"};\n";
-                    val+="Piece"+"{"+p.getPiece()+","+p.getCouleur()+"} ;\n";
+                    val+="Piece :"+"{"+p.getPiece()+","+p.getCouleur()+"} ;\n";
                     val+="break;\n\n";
                 }
              
