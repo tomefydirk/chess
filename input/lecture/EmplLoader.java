@@ -1,6 +1,12 @@
 package lecture;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import fonction.*;
 public class EmplLoader {
+    int cols=8;
+    int rows=8;
     public static String[] decomp_block(String phrase,String regex){
         String[] s=phrase.split(regex);
         for(int i=0;i<s.length;i++){
@@ -68,10 +74,28 @@ public class EmplLoader {
 
         return value_piece;
     }
-    public static void  general_load(Empl empl){
-        empl.reset(8, 8);
+    public static void  general_load(Empl empl,String input,int rows,int cols){
+        empl.reset();
+        String[] a=main_separator(input);
+        String[] b=separation_par_break(a[0]);
+        for(int i=0;i<b.length;i++){
+            int[] p =coordonne_into_piece(b[i]);
+            Piece piece=block_into_piece(b[i]);
+            empl.set_Empl(p[1],p[0], true, piece);
+        }
         
-        
+    }
+    public static String path_saved(String a){
+        String contenu="";
+        try {
+             contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/"+a+".txt"));
+            System.out.println(contenu);
+            return contenu;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+      
+        return "/home/tomefy/Documents/prog/java/chess/save/default_save.txt";
     }
     public static void main(String[] args) {
         String [] a=separation_par_break("jamfja break; cazemfje break; ");
@@ -81,6 +105,15 @@ public class EmplLoader {
         Piece p=block_into_piece("Position :{0,0};\n" + //
                                 "Piece :{k,noir} ;");
         p.debug();
+
+        Empl b=new Empl(8, 8);
+                try {
+            String contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/default_save.txt"));
+            System.out.println(contenu);
+            general_load(b, contenu, 8, 8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
   }
     
 }

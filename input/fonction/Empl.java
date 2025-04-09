@@ -2,6 +2,9 @@ package fonction;
 
 
 public class Empl {
+    int rows=8;
+    int column=8;
+
     boolean[][] est_pris;
     Piece[][] p;
     Quantite q_noire;
@@ -25,6 +28,8 @@ public class Empl {
                 p[i][j]=new Piece('_', "_");
             }
         }
+        this.rows=rows;
+        this.column=column;
         q_blanc=new Quantite();
         q_noire=new Quantite();
     }
@@ -76,7 +81,7 @@ public class Empl {
     public Piece getP(int rows,int column) {
         return p[rows][column];
     }
-    public void reset(int rows,int column){
+    public void reset(){
         for(int i=0;i<rows;i++){
             for(int j=0;j<column;j++){
                 est_pris[i][j]=false;
@@ -86,5 +91,10 @@ public class Empl {
         q_blanc.reset();
         q_noire.reset();
     }
-
+    public void set_q(int rows,int column,Piece value){
+        this.p[rows][column]=value;
+    }
+    public void set_est_pris(int rows,int column,boolean value){
+        this.est_pris[rows][column]=value;
+    }
 }
