@@ -12,6 +12,10 @@ public class Formulaire  extends JPanel{
     
     boolean eror;
     Table t;
+
+    JTextField save;
+    JTextField upload;
+
     public Formulaire(Table t){
         this.t=t;
         this.setLayout(new GridLayout(6, 9));
@@ -33,6 +37,7 @@ public class Formulaire  extends JPanel{
        
         JButton bouton = new JButton("Appliquer");
         make_bouton_appliquer(bouton);
+        make_bouton_uppload_and_save();
     } 
     public static char hashage_piece(String indifiant){
        switch (indifiant) {
@@ -73,14 +78,29 @@ public class Formulaire  extends JPanel{
                 eror=true;
             }
             if(eror){
-                make_eror_message();
+                make_eror_message(bouton_panel);
             }else{
-                destroy_eror_message();
+                destroy_eror_message(bouton_panel);
             }
           
            
         });
         bouton_panel.add(bouton);
+        add(bouton_panel);
+    }
+    void make_bouton_uppload_and_save(){
+        JPanel bouton_panel=new JPanel();
+        this.save=new JTextField(10);
+        bouton_panel.add(this.save);
+
+        this.upload=new JTextField(10);
+        bouton_panel.add(this.upload);
+        
+        bouton_panel.add(new ButtonSave(this.t.empl));
+        bouton_panel.add(new Label("       "));
+
+
+        bouton_panel.add(new ButtonUppload(this.t.empl));
         add(bouton_panel);
     }
     void makeComboBxp(String nom, JComboBox c) {
@@ -98,28 +118,28 @@ public class Formulaire  extends JPanel{
         add(text_panel);
 
     }
-    void make_eror_message() {
+    static void  make_eror_message(JPanel p) {
        
-        for (Component comp : this.getComponents()) {
+        for (Component comp : p.getComponents()) {
             if (comp instanceof Erorpanel) {
                 return; 
             }
         }
         
         JPanel errorPanel = new Erorpanel(); 
-        add(errorPanel); 
-        revalidate();
-        repaint();   
+        p.add(errorPanel); 
+        p.revalidate();
+        p.repaint();   
     }
-    void destroy_eror_message(){
-        for (Component comp : this.getComponents()) {
+    static void destroy_eror_message(JPanel p){
+        for (Component comp : p.getComponents()) {
             if (comp instanceof Erorpanel) { 
-                this.remove(comp); 
+                p.remove(comp); 
                 break;
             }
         }
-        this.revalidate(); 
-        this.repaint();
+        p.revalidate(); 
+        p.repaint();
     }
     void makedoubletextfield(String nom1,String nom2,JTextField t1,JTextField t2){
         JPanel text_panel=new JPanel();

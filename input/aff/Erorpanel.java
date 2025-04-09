@@ -1,6 +1,5 @@
 package aff;
 
-import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

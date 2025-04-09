@@ -12,6 +12,7 @@ public class Table extends JPanel{
     int cols = 8;
     int rows = 8;
 
+    int padding_y=100;
     Empl empl;
     public Table(){
         
@@ -30,12 +31,12 @@ public class Table extends JPanel{
                 }else{
                     g2D.setColor(new Color(2,3,51,180));
                 }
-                g2D.fillRect(c*cell_size, r*cell_size, cell_size, cell_size);
+                g2D.fillRect(c*cell_size, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
                     String img_path="/home/tomefy/Documents/prog/java/chess/img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
 
                     Image image = new ImageIcon(img_path).getImage();
-                    g.drawImage(image,c*cell_size, r*cell_size, cell_size, cell_size,this);
+                    g.drawImage(image,c*cell_size, r*cell_size+padding_y, cell_size, cell_size,this);
                 }
             }
         }
