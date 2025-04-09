@@ -1,0 +1,20 @@
+Position :{0,0};
+Piece{k,noir} ;
+break;
+
+-->
+blanc
+k : 1;
+q : 1;
+c : 2;
+p :8;
+f :2;
+t :2;
+-->
+noir
+k : 0;
+q : 1;
+c : 2;
+p :8;
+f :2;
+t :2;
