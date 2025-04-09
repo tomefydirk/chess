@@ -90,17 +90,17 @@ public class Formulaire  extends JPanel{
     }
     void make_bouton_uppload_and_save(){
         JPanel bouton_panel=new JPanel();
-        this.save=new JTextField(10);
+        this.save=new JTextField("default_save",10);
         bouton_panel.add(this.save);
 
-        this.upload=new JTextField(10);
+        this.upload=new JTextField("default_save",10);
       
 
         bouton_panel.add(new ButtonSave(this.t.empl,this.save));
         bouton_panel.add(new Label("       "));
 
         bouton_panel.add(this.upload);
-        bouton_panel.add(new ButtonUppload(this.t.empl));
+        bouton_panel.add(new ButtonUppload(this.t.empl,this.upload));
         add(bouton_panel);
     }
     void makeComboBxp(String nom, JComboBox c) {
