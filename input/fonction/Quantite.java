@@ -8,7 +8,32 @@ public class Quantite {
     int pion=8;
     int fou=2;
 
-    //impl --->#[set_field]{
+     //impl --->[get_field]{
+        public int getKing() {
+            return king;
+        }
+        public int getQueen() {
+            return queen;
+        }
+       
+        public int getCav() {
+            return cav;
+        }
+       
+        public int getPion() {
+            return pion;
+        }
+        
+        public int getFou() {
+            return fou;
+        }
+    
+        public int getTour() {
+            return tour;
+        }
+    // }
+
+    //impl --->[mut_field]{
     public void setQueen(int queen) {
         this.queen = queen;
     }
@@ -39,31 +64,8 @@ public class Quantite {
     }
     // }
    
-    //impl --->--->#[mut_field]{
-    public int getKing() {
-        return king;
-    }
-    public int getQueen() {
-        return queen;
-    }
    
-    public int getCav() {
-        return cav;
-    }
-   
-    public int getPion() {
-        return pion;
-    }
-    
-    public int getFou() {
-        return fou;
-    }
-
-    public int getTour() {
-        return tour;
-    }
-    // }
-
+    //general impl --->[general_mut]{
     public void general_set(char indicator){
         switch (indicator) {
             case 'k':
@@ -88,6 +90,20 @@ public class Quantite {
                 break;
         }
     }
+       //impl -->[reset]{
+        public void reset(){
+            king=1;
+            queen=1;
+            tour=2;
+            cav=2;
+            pion=8;
+            fou=2;
+       }
+       // }
+    // }
+
+
+    //general impl --->[general_get]{
     public int general_get(char indicator){
         switch (indicator) {
             case 'k':
@@ -112,7 +128,7 @@ public class Quantite {
                 return -1;
         }   
     }
-
+    // }
     public String into_string(){
         String val="";
         val+="k : "+king+";\n";
@@ -123,12 +139,5 @@ public class Quantite {
         val+="t :"+tour+";\n";
         return val;
     }
-    public void reset(){
-         king=1;
-         queen=1;
-         tour=2;
-         cav=2;
-         pion=8;
-         fou=2;
-    }
+ 
 }

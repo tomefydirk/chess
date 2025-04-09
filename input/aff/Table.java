@@ -10,18 +10,31 @@ public class Table extends JPanel{
     public int cell_size=85;
     
     int cols = 8;
-    int rows = 9;
+    int rows = 8;
 
     int padding_y=100;
     int padding_x=30;
     int decal=20;
     Empl empl;
+
+    //impl --->[constructor]{
     public Table(){
         
        this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
     }
+    public Table(int rows,int cols){
+        this.cols=cols;
+        this.rows=rows;
+        
+        this.setLayout(new GridBagLayout());
+        this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
+        this.empl=new Empl(rows,cols);
+    }
+    // }
+   
+    //impl --->[Display]{
     public void afficher_repere(Graphics2D g){
         
     for (int c = 0; c < cols; c++) {
@@ -63,7 +76,7 @@ public class Table extends JPanel{
             }
         }
         afficher_repere(g2D);
-      //  repaint();
     }
+    // }
     
 }

@@ -9,6 +9,7 @@ public class ButtonUppload extends JButton{
         String path;
         Empl empl;
 
+        //impl --->[constructor]{
         public ButtonUppload(Empl empl,JTextField a,Table t){
             super("Upload");
             this.empl=empl;
@@ -19,4 +20,5 @@ public class ButtonUppload extends JButton{
                 t.repaint();
             });
         }
+        // }
 }

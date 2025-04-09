@@ -1,4 +1,4 @@
-Position :{0,8};
+Position :{8,0};
 Piece :{k,noir} ;
 break;
 

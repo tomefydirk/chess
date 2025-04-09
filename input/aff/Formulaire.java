@@ -15,7 +15,8 @@ public class Formulaire  extends JPanel{
 
     JTextField save;
     JTextField upload;
-
+    
+    //impl --->[#constructor]{
     public Formulaire(Table t){
         this.t=t;
         this.setLayout(new GridLayout(6, 9));
@@ -40,6 +41,9 @@ public class Formulaire  extends JPanel{
         make_bouton_uppload_and_save();
         make_main_panel_button();
     } 
+    // }
+
+    //hashage {
     public static char hashage_piece(String indifiant){
        switch (indifiant) {
         case "Pion":
@@ -58,6 +62,9 @@ public class Formulaire  extends JPanel{
             return '_';
        }
     }
+    // }
+
+    //make_function -->{
     void make_bouton_appliquer(JButton bouton){
         JPanel bouton_panel=new JPanel();
         bouton.addActionListener(_ -> {
@@ -174,4 +181,5 @@ public class Formulaire  extends JPanel{
         add(check_panel);
         
     }
+    // }
 }

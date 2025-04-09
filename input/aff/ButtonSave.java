@@ -15,6 +15,7 @@ public class ButtonSave extends JButton{
     int cols=8;
     int row=8;
 
+    //impl --->[init_field]{
     public void init_empl_val(Empl empl){
         for(int r=0;r<row;r++){
             for(int c=0;c<cols;c++){
@@ -35,6 +36,9 @@ public class ButtonSave extends JButton{
         val+=nom+"\n";
         val+=q.into_string();
     }
+    // }
+    
+    //impl --->[constructor]{
     public ButtonSave(Empl empl,JTextField path,int rows,int column){
         super("Save");
         this.row=rows;
@@ -58,4 +62,5 @@ public class ButtonSave extends JButton{
           
         });  
     }
+    // }
 }
