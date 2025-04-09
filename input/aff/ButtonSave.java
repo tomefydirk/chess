@@ -5,17 +5,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
+
 import fonction.*;
 public class ButtonSave extends JButton{
     String val="";
     Empl empl;
-    
+
     int cols=8;
     int row=8;
-    public ButtonSave(Empl empl){
+    public ButtonSave(Empl empl,JTextField path){
         super("Save");
         addActionListener(_->{
-          
+            val="";
             for(int r=0;r<row;r++){
                 for(int c=0;c<row;c++){
                   
@@ -33,7 +35,7 @@ public class ButtonSave extends JButton{
             System.out.println(val);
             System.out.println("Saved");
 
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tomefy/Documents/prog/java/chess/save/e.txt"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tomefy/Documents/prog/java/chess/save/"+path.getText()+".txt"))) {
             writer.write(val);
             System.out.println("Le fichier a été sauvegardé avec succès.");
             } catch (IOException e) {

@@ -94,12 +94,12 @@ public class Formulaire  extends JPanel{
         bouton_panel.add(this.save);
 
         this.upload=new JTextField(10);
-        bouton_panel.add(this.upload);
-        
-        bouton_panel.add(new ButtonSave(this.t.empl));
+      
+
+        bouton_panel.add(new ButtonSave(this.t.empl,this.save));
         bouton_panel.add(new Label("       "));
 
-
+        bouton_panel.add(this.upload);
         bouton_panel.add(new ButtonUppload(this.t.empl));
         add(bouton_panel);
     }
