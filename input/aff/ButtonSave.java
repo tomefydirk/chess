@@ -51,6 +51,7 @@ public class ButtonSave extends JButton{
             } catch (IOException e) {
             System.err.println("Erreur lors de la sauvegarde du fichier : " + e.getMessage());
             }
+          
         });  
     }
 }

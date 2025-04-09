@@ -71,9 +71,9 @@ public class Formulaire  extends JPanel{
             System.out.println("Couleur : " + valCouleur);
             eror=false;
           
-            if(!t.empl.get_est_pris(valX, valY) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
+            if(!t.empl.get_est_pris(valY, valX) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
              
-                t.empl.set_Empl(valX, valY, true, new Piece(valpiece, valCouleur));
+                t.empl.set_Empl(valY, valX, true, new Piece(valpiece, valCouleur));
             }else{
                 eror=true;
             }
@@ -82,7 +82,7 @@ public class Formulaire  extends JPanel{
             }else{
                 destroy_eror_message(bouton_panel);
             }
-          
+            t.repaint();
            
         });
         bouton_panel.add(bouton);
@@ -100,7 +100,7 @@ public class Formulaire  extends JPanel{
         bouton_panel.add(new Label("       "));
 
         bouton_panel.add(this.upload);
-        bouton_panel.add(new ButtonUppload(this.t.empl,this.upload));
+        bouton_panel.add(new ButtonUppload(this.t.empl,this.upload,t));
         add(bouton_panel);
     }
     void makeComboBxp(String nom, JComboBox c) {

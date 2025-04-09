@@ -10,7 +10,7 @@ public class Table extends JPanel{
     public int cell_size=85;
     
     int cols = 8;
-    int rows = 8;
+    int rows = 9;
 
     int padding_y=100;
     int padding_x=30;
@@ -22,24 +22,32 @@ public class Table extends JPanel{
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
     }
-  
+    public void afficher_repere(Graphics2D g){
+        
+    for (int c = 0; c < cols; c++) {
+    g.setColor(Color.black);
+    g.drawString(Integer.toString(c), 
+        padding_x + c * cell_size + cell_size / 2 - 5,
+        padding_y - 10); 
+    }
+
+
+    for (int r = 0; r < rows; r++) {
+    g.setColor(Color.black);
+    g.drawString(Integer.toString(r), 
+        padding_x - 20, 
+        padding_y + r * cell_size + cell_size / 2 + 5); 
+    }
+
+    }
     public void paintComponent(Graphics g ){
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g);
         for(int r=0;r<rows;r++){
             for(int c=0;c<cols;c++){
-            if(c==0){
-                g.setColor(Color.black);
-                g.drawString(Integer.toString(r), padding_x + (r+1)*cell_size-decal , padding_y-5);
-            }
-            if(r==0){
-                g.setColor(Color.black);
-                g.drawString(Integer.toString(c), padding_x -10, padding_y + (c+1)*cell_size-decal);
-            }
-          /* if(c==0){
-                g.setColor(Color.black);
-                g.drawString(Integer.toString(r), padding_y-5, r + cell_size);
-            } */ 
+          
+            
+         
                 if((c+r) %2==0){
                     g2D.setColor(new Color(227,198,181));
                 }else{
@@ -50,11 +58,12 @@ public class Table extends JPanel{
                     String img_path="/home/tomefy/Documents/prog/java/chess/img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
 
                     Image image = new ImageIcon(img_path).getImage();
-                    g.drawImage(image,c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size,this);
+                    g.drawImage(image,c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size,null);
                 }
             }
         }
-        repaint();
+        afficher_repere(g2D);
+      //  repaint();
     }
     
 }
