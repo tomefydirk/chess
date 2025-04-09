@@ -5,7 +5,34 @@ import java.nio.file.Path;
 
 import fonction.*;
 public class EmplLoader {
-  
+
+    //-where return::String{
+        public static String enlever(String phrase,String regex){
+            return phrase.replaceAll(regex,"");
+        }
+        public static String piece_as_string(String value){
+            return value.replaceAll("Piece :","").trim();
+        }
+        public static String position_as_string(String value){
+            return value.replaceAll("Position :","").trim();
+        }
+        //get_path<Real>{
+        public static String path_saved(String a){
+            String contenu="";
+            try {
+                 contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/"+a+".txt"));
+               // System.out.println(contenu);
+                return contenu;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+          
+            return "/home/tomefy/Documents/prog/java/chess/save/default_save.txt";
+        }
+        // }
+    //}
+
+    //-where return::String[]{
     public static String[] decomp_block(String phrase,String regex){
         String[] s=phrase.split(regex);
         for(int i=0;i<s.length;i++){
@@ -14,9 +41,7 @@ public class EmplLoader {
         }
         return s;
     }
-    public static String enlever(String phrase,String regex){
-        return phrase.replaceAll(regex,"");
-    }
+
     public static String[] extraireElements(String input) {
         input = input.substring(1, input.length() - 1); 
         System.out.println(input);
@@ -26,28 +51,11 @@ public class EmplLoader {
         } 
         return parts; 
     }
-    public static int[] extraireNombres(String input){
-        String[] p=extraireElements(input);
-        int [] retour=new int[2];
-        for(int i=0;i<2;i++){
-            retour[i]=Integer.parseInt(p[i]);
-        }
-        return retour;
-    }
-    public static String piece_as_string(String value){
-        return value.replaceAll("Piece :","").trim();
-    }
-    public static String position_as_string(String value){
-        return value.replaceAll("Position :","").trim();
-    }
+    
     public static String[] element_piece(String value){
         String p_as_string=piece_as_string(value);
         return extraireElements(p_as_string);
     } 
-    public static int[] element_position(String value){
-        String p_as_string=position_as_string(value);
-        return extraireNombres(p_as_string);
-    }
     public static String[] main_separator(String input){
        String[] block=decomp_block(input.trim(),"-->");
        return block;
@@ -59,12 +67,23 @@ public class EmplLoader {
        }
        return block;
     }
-     public static Piece block_into_piece(String input){
-        String[] value=input.split(";");
+    // }
 
-        String[] value_piece=element_piece(value[1]);
-
-        return (new Piece(value_piece[0].charAt(0),value_piece[1]));
+    //-where return::int[]{
+    public static int[] extraireNombres(String input){
+     
+             String[] p=extraireElements(input);
+            int [] retour=new int[2];
+            for(int i=0;i<2;i++){
+                retour[i]=Integer.parseInt(p[i]);
+            }
+            //{nb1,nb2} as string -->[nb1,nb2] as int[]
+            return retour;
+    }
+    
+    public static int[] element_position(String value){
+        String p_as_string=position_as_string(value);
+        return extraireNombres(p_as_string);
     }
     public static int[] coordonne_into_piece(String input){
         String[] value=input.split(";");
@@ -73,6 +92,20 @@ public class EmplLoader {
 
         return value_piece;
     }
+    // }
+
+    //-where return::Piece{
+        public static Piece block_into_piece(String input){
+            String[] value=input.split(";");
+    
+            String[] value_piece=element_piece(value[1]);
+    
+            return (new Piece(value_piece[0].charAt(0),value_piece[1]));
+        }
+    //}
+   
+  
+    //-where return::void{
     public static void  general_load(Empl empl,String input){
         empl.reset();
         String[] a=main_separator(input);
@@ -85,20 +118,12 @@ public class EmplLoader {
             Piece piece=block_into_piece(b[i]);
             empl.set_Empl(p[1],p[0], true, piece);
         }
+        //load -->|empl|
         
     }
-    public static String path_saved(String a){
-        String contenu="";
-        try {
-             contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/"+a+".txt"));
-           // System.out.println(contenu);
-            return contenu;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-      
-        return "/home/tomefy/Documents/prog/java/chess/save/default_save.txt";
-    }
+    // }
+
+    //-->debug::[test:]{
     public static void main(String[] args) {
         String [] a=separation_par_break("jamfja break; cazemfje break; ");
         for(int i=0;i<a.length;i++){
@@ -117,5 +142,6 @@ public class EmplLoader {
             e.printStackTrace();
         }
   }
+    // }
     
 }

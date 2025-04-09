@@ -15,8 +15,8 @@ public class Formulaire  extends JPanel{
 
     JTextField save;
     JTextField upload;
-    
-    //impl --->[#constructor]{
+
+    //impl --->[constructor]{
     public Formulaire(Table t){
         this.t=t;
         this.setLayout(new GridLayout(6, 9));
@@ -64,7 +64,7 @@ public class Formulaire  extends JPanel{
     }
     // }
 
-    //make_function -->{
+    //impl -->[make_function]{
     void make_bouton_appliquer(JButton bouton){
         JPanel bouton_panel=new JPanel();
         bouton.addActionListener(_ -> {
