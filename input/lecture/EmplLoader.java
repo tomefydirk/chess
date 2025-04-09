@@ -54,17 +54,33 @@ public class EmplLoader {
        }
        return block;
     }
-   /*  public static Piece block_into_piece(String input){
+     public static Piece block_into_piece(String input){
         String[] value=input.split(";");
-        String value_piece=value[1].replaceAll("Piece","");
+
+        String[] value_piece=element_piece(value[1]);
+
+        return (new Piece(value_piece[0].charAt(0),value_piece[1]));
+    }
+    public static int[] coordonne_into_piece(String input){
+        String[] value=input.split(";");
+
+        int[] value_piece=element_position(value[0]);
+
+        return value_piece;
+    }
+    public static void  general_load(Empl empl){
+        empl.reset(8, 8);
         
-        return (new Piece('n',"famfj"));
-    }*/
+        
+    }
     public static void main(String[] args) {
         String [] a=separation_par_break("jamfja break; cazemfje break; ");
         for(int i=0;i<a.length;i++){
             System.out.println("on a :"+ a[i]);
         }
+        Piece p=block_into_piece("Position :{0,0};\n" + //
+                                "Piece :{k,noir} ;");
+        p.debug();
   }
     
 }

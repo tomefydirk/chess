@@ -123,4 +123,12 @@ public class Quantite {
         val+="t :"+tour+";\n";
         return val;
     }
+    public void reset(){
+         king=1;
+         queen=1;
+         tour=2;
+         cav=2;
+         pion=8;
+         fou=2;
+    }
 }

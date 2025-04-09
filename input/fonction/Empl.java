@@ -76,5 +76,15 @@ public class Empl {
     public Piece getP(int rows,int column) {
         return p[rows][column];
     }
+    public void reset(int rows,int column){
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<column;j++){
+                est_pris[i][j]=false;
+                p[i][j].reset();
+            }
+        }
+        q_blanc.reset();
+        q_noire.reset();
+    }
 
 }

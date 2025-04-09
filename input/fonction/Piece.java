@@ -26,5 +26,15 @@ public class Piece {
     public void setCouleur(String couleur) {
         this.couleur = couleur;
     }
+    public void reset(){
+        this.couleur="_";
+        this.piece='_';
+    }
+    public void debug(){
+        System.out.println("{");
+        System.out.println("Couleur :"+couleur);
+        System.out.println("Piece :"+piece);
+        System.out.println("}");
+    }
     
 }
