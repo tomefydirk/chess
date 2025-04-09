@@ -18,6 +18,9 @@ public class Empl {
         return q_blanc;
     }
     public Empl(int rows,int column){
+        this.rows=rows;
+        this.column=column;
+        
         est_pris=new boolean[rows][];
         p=new Piece[rows][];
         for(int i=0;i<rows;i++){
@@ -28,8 +31,6 @@ public class Empl {
                 p[i][j]=new Piece('_', "_");
             }
         }
-        this.rows=rows;
-        this.column=column;
         q_blanc=new Quantite();
         q_noire=new Quantite();
     }

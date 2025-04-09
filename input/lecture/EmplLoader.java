@@ -5,8 +5,7 @@ import java.nio.file.Path;
 
 import fonction.*;
 public class EmplLoader {
-    int cols=8;
-    int rows=8;
+  
     public static String[] decomp_block(String phrase,String regex){
         String[] s=phrase.split(regex);
         for(int i=0;i<s.length;i++){
@@ -74,9 +73,12 @@ public class EmplLoader {
 
         return value_piece;
     }
-    public static void  general_load(Empl empl,String input,int rows,int cols){
+    public static void  general_load(Empl empl,String input){
         empl.reset();
         String[] a=main_separator(input);
+        if(a[0]==""){
+            return;
+        }   
         String[] b=separation_par_break(a[0]);
         for(int i=0;i<b.length;i++){
             int[] p =coordonne_into_piece(b[i]);
@@ -89,7 +91,7 @@ public class EmplLoader {
         String contenu="";
         try {
              contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/"+a+".txt"));
-            System.out.println(contenu);
+           // System.out.println(contenu);
             return contenu;
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,7 +112,7 @@ public class EmplLoader {
                 try {
             String contenu = Files.readString(Path.of("/home/tomefy/Documents/prog/java/chess/save/default_save.txt"));
             System.out.println(contenu);
-            general_load(b, contenu, 8, 8);
+            general_load(b, contenu);
         } catch (IOException e) {
             e.printStackTrace();
         }

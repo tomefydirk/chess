@@ -38,6 +38,7 @@ public class Formulaire  extends JPanel{
         JButton bouton = new JButton("Appliquer");
         make_bouton_appliquer(bouton);
         make_bouton_uppload_and_save();
+        make_main_panel_button();
     } 
     public static char hashage_piece(String indifiant){
        switch (indifiant) {
@@ -96,7 +97,7 @@ public class Formulaire  extends JPanel{
         this.upload=new JTextField("default_save",10);
       
 
-        bouton_panel.add(new ButtonSave(this.t.empl,this.save));
+        bouton_panel.add(new ButtonSave(this.t.empl,this.save,t.rows,t.cols));
         bouton_panel.add(new Label("       "));
 
         bouton_panel.add(this.upload);
@@ -109,6 +110,13 @@ public class Formulaire  extends JPanel{
         combo_bar.add(c);
         add(combo_bar);
     }   
+    void make_main_panel_button(){
+
+        JPanel bouton_bar=new JPanel();
+        bouton_bar.add(new ButtonReset(this.t.empl, t));
+        add(bouton_bar);
+
+    }
     void maketextfield(String nom,JTextField t){
         JPanel text_panel=new JPanel();
         JLabel label=new JLabel(nom);

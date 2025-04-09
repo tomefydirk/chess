@@ -14,7 +14,7 @@ public class ButtonUppload extends JButton{
             this.empl=empl;
             addActionListener(_->{
                 String path=EmplLoader.path_saved(a.getText());
-                EmplLoader.general_load(empl, path, 8, 8);
+                EmplLoader.general_load(empl, path);
                 System.out.println("Save"+a.getText());
                 t.repaint();
             });
