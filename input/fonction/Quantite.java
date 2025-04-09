@@ -112,4 +112,15 @@ public class Quantite {
                 return -1;
         }   
     }
+
+    public String into_string(){
+        String val="";
+        val+="k : "+king+";\n";
+        val+="q : "+queen+";\n";
+        val+="c : "+cav+";\n";
+        val+="p :"+pion+";\n";
+        val+="f :"+fou+";\n";
+        val+="t :"+tour+";\n";
+        return val;
+    }
 }

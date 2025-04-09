@@ -5,9 +5,15 @@ public class Empl {
     boolean[][] est_pris;
     Piece[][] p;
     Quantite q_noire;
+    public Quantite getQ_noire() {
+        return q_noire;
+    }
     Quantite q_blanc;
   
    
+    public Quantite getQ_blanc() {
+        return q_blanc;
+    }
     public Empl(int rows,int column){
         est_pris=new boolean[rows][];
         p=new Piece[rows][];
