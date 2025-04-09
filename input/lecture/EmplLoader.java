@@ -15,7 +15,10 @@ public class EmplLoader {
     public static String[] extraireElements(String input) {
         input = input.substring(1, input.length() - 1); 
         System.out.println(input);
-        String[] parts = input.split(",", 2); 
+        String[] parts = input.split(",", 2);
+        for(int i=0;i<2;i++){
+            parts[i]=parts[i].trim();
+        } 
         return parts; 
     }
     public static int[] extraireNombres(String input){
