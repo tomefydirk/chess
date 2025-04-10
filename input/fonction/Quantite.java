@@ -90,6 +90,30 @@ public class Quantite {
                 break;
         }
     }
+    public void general_add(char indicator){
+        switch (indicator) {
+            case 'k':
+                king++;
+                break;
+            case  'q':
+                queen++;
+                break;
+            case 'c':
+                cav++;
+                 break;
+            case 'p':
+                pion++;
+                break;
+            case 'f':
+                fou++;
+                break;
+            case 't':
+                tour++;
+                break; 
+            default:
+                break;
+        }
+    }
        //impl -->[reset]{
         public void reset(){
             king=1;

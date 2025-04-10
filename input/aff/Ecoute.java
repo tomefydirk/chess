@@ -9,15 +9,20 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JOptionPane;
 
 public class Ecoute implements MouseMotionListener,MouseListener{
-
+    Table echequier;
     public Ecoute(Table t){
+        echequier=t;
         t.addMouseListener(this);
         t.addMouseMotionListener(this);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        Point pos =e.getPoint();
-        JOptionPane.showMessageDialog(null, "Souris !!!"+pos.toString());
+        int x = (int) ((e.getPoint().getX()-echequier.padding_x)/echequier.cell_size);   
+        int y= (int) ((e.getPoint().getY()-echequier.padding_y)/echequier.cell_size); 
+        Point pos=new Point(x, y);
+        echequier.selected=pos;
+        echequier.repaint();
+     //   JOptionPane.showMessageDialog(null, "Souris !!!"+pos.toString());
     }
 
     @Override

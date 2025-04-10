@@ -10,6 +10,7 @@ public class ButtonReset extends JButton{
             super("Reset");
             addActionListener(_->{
                 e.reset();
+                t.selected=null;
                 t.repaint();
             });
         }

@@ -15,10 +15,10 @@ public class Mafenetre extends JFrame{
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-        this.t=new Table();
-        
+       
+
         this.f=new Formulaire(t);
-   
+        this.t=new Table();
       this.add(f);
       this.add(t);
         this.setVisible(true);
@@ -30,8 +30,8 @@ public class Mafenetre extends JFrame{
       this.setLocationRelativeTo(null);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
+  
       this.t=new Table(row,cols);
-      
       this.f=new Formulaire(t);
  
     this.add(f);

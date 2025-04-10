@@ -7,22 +7,27 @@ import javax.swing.*;
 import fonction.Empl;
 
 public class Table extends JPanel{
-    public int cell_size=85;
+    int cell_size=85;
     
+  
     int cols = 8;
     int rows = 8;
 
     int padding_y=100;
+   
     int padding_x=30;
+    
     int decal=20;
     Empl empl;
     Ecoute e;
+    public Point selected;
     //impl --->[constructor]{
     public Table(){
         
        this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
+        e=new Ecoute(this);
     }
     public Table(int rows,int cols){
         this.cols=cols;
@@ -59,13 +64,17 @@ public class Table extends JPanel{
         super.paintComponent(g);
         for(int r=0;r<rows;r++){
             for(int c=0;c<cols;c++){
-          
-            
-         
+             
                 if((c+r) %2==0){
                     g2D.setColor(new Color(227,198,181));
                 }else{
                     g2D.setColor(new Color(2,3,51,180));
+                }
+                if(selected!=null){
+                    if(selected.x==c && selected.y==r){
+                        g2D.setColor(new Color(245,0,0,100));
+                    }
+                   
                 }
                 g2D.fillRect(c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
@@ -79,5 +88,15 @@ public class Table extends JPanel{
         afficher_repere(g2D);
     }
     // }
-    
+    //impl --->[get_field]{
+        public int getCell_size() {
+            return cell_size;
+        }
+        public int getPadding_x() {
+            return padding_x;
+        }
+        public int getPadding_y() {
+            return padding_y;
+        }
+    // }
 }
