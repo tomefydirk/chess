@@ -7,7 +7,7 @@ import aff.*;
 public class ButtonReset extends JButton{
         //impl --->[constructor]{
         public ButtonReset(Empl e,Table t){
-            super("Reset ⚠️");
+            super("Reset ☠️");
             addActionListener(_->{
                 e.reset();
                 t.selected=null;
