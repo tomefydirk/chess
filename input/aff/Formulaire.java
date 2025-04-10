@@ -136,19 +136,19 @@ public class Formulaire  extends JPanel{
     static void  make_eror_message(JPanel p) {
        
         for (Component comp : p.getComponents()) {
-            if (comp instanceof Erorpanel) {
+            if (comp instanceof ErorPositionpanel) {
                 return; 
             }
         }
         
-        JPanel errorPanel = new Erorpanel(); 
+        JPanel errorPanel = new ErorPositionpanel(); 
         p.add(errorPanel); 
         p.revalidate();
         p.repaint();   
     }
     static void destroy_eror_message(JPanel p){
         for (Component comp : p.getComponents()) {
-            if (comp instanceof Erorpanel) { 
+            if (comp instanceof ErorPositionpanel) { 
                 p.remove(comp); 
                 break;
             }

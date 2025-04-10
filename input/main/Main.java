@@ -2,7 +2,10 @@ package main;
 import aff.*;
 public class Main {
     public static void main(String[] args) throws Exception {
-        Mafenetre f=new Mafenetre(8,10);
+        int x=8;
+        int y=8;
+        Mafenetre f=new Mafenetre();
         f.succes_mesage();
     }   
 }
+    

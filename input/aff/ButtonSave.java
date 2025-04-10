@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import fonction.*;
+import lecture.*;
 public class ButtonSave extends JButton{
     String val="";
     Empl empl;
@@ -15,28 +16,7 @@ public class ButtonSave extends JButton{
     int cols=8;
     int row=8;
 
-    //impl --->[init_field]{
-    public void init_empl_val(Empl empl){
-        for(int r=0;r<row;r++){
-            for(int c=0;c<cols;c++){
-              
-                if(empl.get_est_pris(r, c)){
-                    Piece p=empl.getP(r, c);
-                    val+="Position :"+"{"+c+","+r+"};\n";
-                    val+="Piece :"+"{"+p.getPiece()+","+p.getCouleur()+"} ;\n";
-                    val+="break;\n\n";
-                }
-             
-            
-            }
-        }
-        val+="-->\n";
-    }
-    public void init_qt_val(Quantite q,String nom){
-        val+=nom+"\n";
-        val+=q.into_string();
-    }
-    // }
+    
     
     //impl --->[constructor]{
     public ButtonSave(Empl empl,JTextField path,int rows,int column){
@@ -46,11 +26,10 @@ public class ButtonSave extends JButton{
 
         addActionListener(_->{
             val="";
-            init_empl_val(empl); 
-            init_qt_val(empl.getQ_blanc(), "blanc");
+            val+=EmplSaver.init_empl_val(empl,this.row,this.cols); 
+            val+=EmplSaver.init_qt_val(empl.getQ_blanc(), "blanc");
             val+="-->\n";
-            init_qt_val(empl.getQ_noire(), "noir");         
-            System.out.println(val);
+            val+=EmplSaver.init_qt_val(empl.getQ_noire(), "noir");         
             System.out.println("Saved");
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tomefy/Documents/prog/java/chess/save/"+path.getText()+".txt"))) {
