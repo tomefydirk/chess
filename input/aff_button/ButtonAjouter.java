@@ -29,7 +29,7 @@ public class ButtonAjouter extends JButton{
         panel.add(imageLabel);
 
         
-        JOptionPane.showMessageDialog(null, panel, "Impossible d'ajouter la case", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, panel, "Impossible d'ajouter la case", JOptionPane.ERROR_MESSAGE);
         }
        public ButtonAjouter(Formulaire f,Table t){
         super("Ajouter");
