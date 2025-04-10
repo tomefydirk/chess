@@ -55,7 +55,7 @@ public class Formulaire  extends JPanel{
        add(new A_Panel(piece));
        add(new A_Panel(couleur));
        add(new C_Panel("x", "y", x, y));
-       add(new D_Panel(new JButton("Ajouer"),this, t));
+       add(new D_Panel(this, t));
        
         make_bouton_uppload_and_save();
         make_main_panel_button();
