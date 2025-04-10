@@ -27,7 +27,7 @@ public class Table extends JPanel{
        this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
-        e=new Ecoute(this);
+      
     }
     public Table(int rows,int cols){
         this.cols=cols;
@@ -36,7 +36,7 @@ public class Table extends JPanel{
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
-        e=new Ecoute(this);
+        
     }
     // }
    

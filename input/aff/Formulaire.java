@@ -40,6 +40,8 @@ public class Formulaire  extends JPanel{
         make_bouton_appliquer(bouton);
         make_bouton_uppload_and_save();
         make_main_panel_button();
+        Ecoute e=new Ecoute(t,x,y);
+        e.succes_mesage();
     } 
     // }
 

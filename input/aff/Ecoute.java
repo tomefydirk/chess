@@ -6,14 +6,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
-import javax.swing.JOptionPane;
+
+import javax.swing.JTextField;
 
 public class Ecoute implements MouseMotionListener,MouseListener{
     Table echequier;
-    public Ecoute(Table t){
+
+    JTextField x_field;
+    JTextField y_field;
+
+    public Ecoute(Table t,JTextField x,JTextField y){
         echequier=t;
         t.addMouseListener(this);
         t.addMouseMotionListener(this);
+        this.x_field=x;
+        this.y_field=y;
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -22,9 +29,13 @@ public class Ecoute implements MouseMotionListener,MouseListener{
         Point pos=new Point(x, y);
         echequier.selected=pos;
         echequier.repaint();
+        x_field.setText(""+x);
+        y_field.setText(""+y);
      //   JOptionPane.showMessageDialog(null, "Souris !!!"+pos.toString());
     }
-
+    public void succes_mesage(){
+        
+    }
     @Override
     public void mousePressed(MouseEvent e) {
        
@@ -42,7 +53,7 @@ public class Ecoute implements MouseMotionListener,MouseListener{
 
     @Override
     public void mouseExited(MouseEvent e) {
-    
+
     }
 
     @Override
