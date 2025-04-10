@@ -19,6 +19,7 @@ public class Table extends JPanel{
     
     int decal=20;
     Empl empl;
+    
     Ecoute e;
     public Point selected;
     //impl --->[constructor]{
@@ -97,6 +98,9 @@ public class Table extends JPanel{
         }
         public int getPadding_y() {
             return padding_y;
+        }
+        public Empl getEmpl() {
+            return empl;
         }
     // }
 }

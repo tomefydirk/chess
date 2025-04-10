@@ -4,13 +4,32 @@ import java.awt.*;
 import javax.swing.*;
 
 import aff_button.*;
-import fonction.Piece;
+import asset_formulaire.*;
 public class Formulaire  extends JPanel{
     JTextField x,y;
     JComboBox piece;
+    public JComboBox getPiece() {
+        return piece;
+    }
     JComboBox couleur;
     
+    public JComboBox getCouleur() {
+        return couleur;
+    }
     boolean eror;
+    
+    public boolean setEror() {
+        return eror;
+    }
+    public JTextField get_x_Field(){
+        return this.x;
+    }
+    public JTextField get_y_Field(){
+        return this.y;
+    }
+    public void setEror(boolean eror) {
+        this.eror = eror;
+    }
     Table t;
 
     JTextField save;
@@ -32,12 +51,12 @@ public class Formulaire  extends JPanel{
         this.couleur=new JComboBox<String>(new String[]{"noir","blanc"});
         this.x=new JTextField("x",10);
         this.y=new JTextField("y",10);
-        makeComboBxp("Pièce",piece);
-        makeComboBxp("Couleur",  couleur);
-        makedoubletextfield("x ", "y ", x, y);
+      
+       add(new A_Panel(piece));
+       add(new A_Panel(couleur));
+       add(new C_Panel("x", "y", x, y));
+       add(new D_Panel(new JButton("Ajouer"),this, t));
        
-        JButton bouton = new JButton("Appliquer");
-        make_bouton_appliquer(bouton);
         make_bouton_uppload_and_save();
         make_main_panel_button();
         Ecoute e=new Ecoute(t,x,y);
@@ -67,37 +86,6 @@ public class Formulaire  extends JPanel{
     // }
 
     //impl -->[make_function]{
-    void make_bouton_appliquer(JButton bouton){
-        JPanel bouton_panel=new JPanel();
-        bouton.addActionListener(_ -> {
-            int valX =Integer.parseInt(x.getText()) ;
-            int valY =Integer.parseInt(y.getText()) ;
-            char valpiece = hashage_piece((String) piece.getSelectedItem());
-            String valCouleur = (String) couleur.getSelectedItem();
-        
-            System.out.println("X : " + valX);
-            System.out.println("Y : " + valY);
-            System.out.println("piece : " + valpiece);
-            System.out.println("Couleur : " + valCouleur);
-            eror=false;
-          
-            if(!t.empl.get_est_pris(valY, valX) && t.empl.get_q(valCouleur).general_get(valpiece)>0){
-             
-                t.empl.set_Empl(valY, valX, true, new Piece(valpiece, valCouleur));
-            }else{
-                eror=true;
-            }
-            if(eror){
-                make_eror_message(bouton_panel);
-            }else{
-                destroy_eror_message(bouton_panel);
-            }
-            t.repaint();
-           
-        });
-        bouton_panel.add(bouton);
-        add(bouton_panel);
-    }
     void make_bouton_uppload_and_save(){
         JPanel bouton_panel=new JPanel();
         this.save=new JTextField("default_save",10);
@@ -113,12 +101,6 @@ public class Formulaire  extends JPanel{
         bouton_panel.add(new ButtonUppload(this.t.empl,this.upload,t));
         add(bouton_panel);
     }
-    void makeComboBxp(String nom, JComboBox c) {
-        JPanel combo_bar = new JPanel();
-        combo_bar.add(new JLabel(nom));
-        combo_bar.add(c);
-        add(combo_bar);
-    }   
     void make_main_panel_button(){
 
         JPanel bouton_bar=new JPanel();
@@ -134,46 +116,6 @@ public class Formulaire  extends JPanel{
         text_panel.add(t);
         add(text_panel);
 
-    }
-    static void  make_eror_message(JPanel p) {
-       
-        for (Component comp : p.getComponents()) {
-            if (comp instanceof ErorPositionpanel) {
-                return; 
-            }
-        }
-        
-        JPanel errorPanel = new ErorPositionpanel(); 
-        p.add(errorPanel); 
-        p.revalidate();
-        p.repaint();   
-    }
-    static void destroy_eror_message(JPanel p){
-        for (Component comp : p.getComponents()) {
-            if (comp instanceof ErorPositionpanel) { 
-                p.remove(comp); 
-                break;
-            }
-        }
-        p.revalidate(); 
-        p.repaint();
-    }
-    void makedoubletextfield(String nom1,String nom2,JTextField t1,JTextField t2){
-        JPanel text_panel=new JPanel();
-        JLabel label1=new JLabel(nom1);
-      
-        text_panel.add(label1);
-        text_panel.add(t1);
-
-        text_panel.add(new JLabel("        "));
-
-        JLabel label2=new JLabel(nom2);
-       
-        text_panel.add(label2);
-        text_panel.add(t2);
-
-
-        add(text_panel);
     }
     void make_checkbox(String nom,JCheckBox c){
         JPanel check_panel=new JPanel();
