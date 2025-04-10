@@ -79,12 +79,29 @@ public class Empl {
                 break;
         }
     }
+    public void retire_q(Piece p){
+        switch (p.couleur) {
+            case "noir":
+                q_noire.general_add(p.piece);
+                break;
+               
+            case "blanc":
+                q_blanc.general_add(p.piece);
+                break;
+            default:
+                break;
+        }
+    }
     public void set_Empl(int rows,int column,boolean est_pris,Piece p){
         this.est_pris[rows][column]=est_pris;
         this.p[rows][column]=p;
         this.set_q(p);
     }
-    
+    public void delete_Empl(int rows,int column,Piece p){
+        this.est_pris[rows][column]=false;
+        this.p[rows][column]=new Piece('_', "_");
+        this.retire_q(p);
+    }
     //impl --->[reset_field]{
         public void reset(){
             for(int i=0;i<rows;i++){
