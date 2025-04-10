@@ -1,5 +1,5 @@
 Position :{0,0};
-Piece :{p,noir} ;
+Piece :{f,blanc} ;
 break;
 
 -->
@@ -8,13 +8,13 @@ k : 1;
 q : 1;
 c : 2;
 p :8;
-f :2;
+f :1;
 t :2;
 -->
 noir
 k : 1;
 q : 1;
 c : 2;
-p :7;
+p :8;
 f :2;
 t :2;

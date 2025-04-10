@@ -3,7 +3,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-
+import aff_button.*;
 import fonction.Piece;
 public class Formulaire  extends JPanel{
     JTextField x,y;

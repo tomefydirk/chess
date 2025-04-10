@@ -1,10 +1,11 @@
-package aff;
+package aff_button;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
 import fonction.*;
 import lecture.*;
+import aff.*;
 public class ButtonUppload extends JButton{
         String path;
         Empl empl;

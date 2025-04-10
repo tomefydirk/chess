@@ -36,7 +36,7 @@ public class Mafenetre extends JFrame{
  
     this.add(f);
     this.add(t);
-      this.setVisible(true);
+     this.setVisible(true);
         
     }
     // }
