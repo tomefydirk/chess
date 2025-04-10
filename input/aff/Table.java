@@ -23,13 +23,6 @@ public class Table extends JPanel{
     Ecoute e;
     public Point selected;
     //impl --->[constructor]{
-    public Table(){
-        
-       this.setLayout(new GridBagLayout());
-        this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
-        this.empl=new Empl(rows,cols);
-      
-    }
     public Table(int rows,int cols){
         this.cols=cols;
         this.rows=rows;

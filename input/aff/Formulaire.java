@@ -7,7 +7,7 @@ public class Formulaire  extends JPanel{
     JTextField x,y;
     JComboBox piece;
     JComboBox couleur;
-    boolean eror;
+  
     
     
     Table t;
@@ -22,7 +22,6 @@ public class Formulaire  extends JPanel{
     public Formulaire(Table t){
         this.t=t;
         this.setLayout(new GridLayout(6, 9));
-        this.eror=false;
         this.piece=new JComboBox<String>(new String[]{
             "Roi",
             "Reine",
@@ -92,13 +91,6 @@ public class Formulaire  extends JPanel{
     //}
 
     //impl --->[mut_field]{
-        public boolean setEror() {
-            return eror;
-        }
-       
-        public void setEror(boolean eror) {
-            this.eror = eror;
-        }
         public void setSave(JTextField save) {
             this.save = save;
         }

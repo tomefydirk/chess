@@ -9,21 +9,6 @@ public class Mafenetre extends JFrame{
     Table t;
     Formulaire f;
     //impl -->[constructor]{
-    public Mafenetre(){
-        this.setLayout(new GridLayout(1, 2));
-        this.setMinimumSize(new Dimension(1000,1000));
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
-       
-
-        this.f=new Formulaire(t);
-        this.t=new Table();
-      this.add(f);
-      this.add(t);
-        this.setVisible(true);
-
-    }
     public Mafenetre(int row,int cols){
       this.setLayout(new GridLayout(1, 2));
       this.setMinimumSize(new Dimension(1000,1000));
