@@ -2,39 +2,22 @@ package aff;
 import java.awt.*;
 
 import javax.swing.*;
-
-import aff_button.*;
 import asset_formulaire.*;
 public class Formulaire  extends JPanel{
     JTextField x,y;
     JComboBox piece;
-    public JComboBox getPiece() {
-        return piece;
-    }
     JComboBox couleur;
-    
-    public JComboBox getCouleur() {
-        return couleur;
-    }
     boolean eror;
     
-    public boolean setEror() {
-        return eror;
-    }
-    public JTextField get_x_Field(){
-        return this.x;
-    }
-    public JTextField get_y_Field(){
-        return this.y;
-    }
-    public void setEror(boolean eror) {
-        this.eror = eror;
-    }
+    
     Table t;
 
     JTextField save;
+    
     JTextField upload;
 
+   
+ 
     //impl --->[constructor]{
     public Formulaire(Table t){
         this.t=t;
@@ -56,9 +39,9 @@ public class Formulaire  extends JPanel{
        add(new A_Panel(couleur));
        add(new C_Panel("x", "y", x, y));
        add(new D_Panel(this, t));
+       add(new E_Panel(this, t,t.rows, t.cols));
+       add(new F_Panel(t));
        
-        make_bouton_uppload_and_save();
-        make_main_panel_button();
         Ecoute e=new Ecoute(t,x,y);
         e.succes_mesage();
     } 
@@ -85,45 +68,43 @@ public class Formulaire  extends JPanel{
     }
     // }
 
-    //impl -->[make_function]{
-    void make_bouton_uppload_and_save(){
-        JPanel bouton_panel=new JPanel();
-        this.save=new JTextField("default_save",10);
-        bouton_panel.add(this.save);
-
-        this.upload=new JTextField("default_save",10);
-      
-
-        bouton_panel.add(new ButtonSave(this.t.empl,this.save,t.rows,t.cols));
-        bouton_panel.add(new Label("       "));
-
-        bouton_panel.add(this.upload);
-        bouton_panel.add(new ButtonUppload(this.t.empl,this.upload,t));
-        add(bouton_panel);
-    }
-    void make_main_panel_button(){
-
-        JPanel bouton_bar=new JPanel();
-        bouton_bar.add(new ButtonReset(this.t.empl, t));
-        add(bouton_bar);
-
-    }
-    void maketextfield(String nom,JTextField t){
-        JPanel text_panel=new JPanel();
-        JLabel label=new JLabel(nom);
-    
-        text_panel.add(label);
-        text_panel.add(t);
-        add(text_panel);
-
-    }
-    void make_checkbox(String nom,JCheckBox c){
-        JPanel check_panel=new JPanel();
-     
-        c=new JCheckBox(nom);
-        check_panel.add(c);
-        add(check_panel);
+    //impl --->[get_field]{
+        public JComboBox getPiece() {
+            return piece;
+        }
         
-    }
-    // }
+        
+        public JComboBox getCouleur() {
+            return couleur;
+        }
+        public JTextField get_x_Field(){
+            return this.x;
+        }
+        public JTextField get_y_Field(){
+            return this.y;
+        }
+        public JTextField getSave() {
+            return save;
+        }
+        public JTextField getUpload() {
+            return upload;
+        }
+    //}
+
+    //impl --->[mut_field]{
+        public boolean setEror() {
+            return eror;
+        }
+       
+        public void setEror(boolean eror) {
+            this.eror = eror;
+        }
+        public void setSave(JTextField save) {
+            this.save = save;
+        }
+        public void setUpload(JTextField upload) {
+            this.upload = upload;
+        }
+    //}
+    
 }

@@ -1,14 +1,39 @@
 package aff_button;
 
+import java.awt.Component;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import aff.ErorPositionpanel;
 import aff.Formulaire;
 import aff.Table;
-import asset_formulaire.D_Panel;
 import fonction.Piece;
 
 public class ButtonAjouter extends JButton{
+    public static void  make_eror_message(JPanel p) {
+       
+        for (Component comp : p.getComponents()) {
+            if (comp instanceof ErorPositionpanel) {
+                return; 
+            }
+        }
+        
+        JPanel errorPanel = new ErorPositionpanel(); 
+        p.add(errorPanel); 
+        p.revalidate();
+        p.repaint();   
+        }
+        public static void destroy_eror_message(JPanel p){
+        for (Component comp : p.getComponents()) {
+            if (comp instanceof ErorPositionpanel) { 
+                p.remove(comp); 
+                break;
+            }
+        }
+        p.revalidate(); 
+        p.repaint();
+        }
     public ButtonAjouter(Formulaire f,Table t,JPanel j){
         super("Ajouter");
         this.addActionListener(_ -> {
@@ -21,7 +46,7 @@ public class ButtonAjouter extends JButton{
             System.out.println("Y : " + valY);
             System.out.println("piece : " + valpiece);
             System.out.println("Couleur : " + valCouleur); */
-            
+
             f.setEror(false);
           
             if(!t.getEmpl().get_est_pris(valY, valX) && t.getEmpl().get_q(valCouleur).general_get(valpiece)>0){
@@ -31,9 +56,9 @@ public class ButtonAjouter extends JButton{
                 f.setEror(true);
             }
             if(f.setEror()){
-              D_Panel.make_eror_message(j);
+              make_eror_message(j);
             }else{
-                D_Panel.destroy_eror_message(j);
+              destroy_eror_message(j);
             }
             t.repaint();
            
