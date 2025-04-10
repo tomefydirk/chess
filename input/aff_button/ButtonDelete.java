@@ -6,9 +6,9 @@ import aff.*;
 import fonction.Empl;
 import fonction.Piece;
 
-import javax.swing.JPanel;
+
 public class ButtonDelete extends JButton{
-        public ButtonDelete(Formulaire f,Table t,JPanel j){
+        public ButtonDelete(Formulaire f,Table t){
              
                         super("Retirer");
                         this.addActionListener(_ -> {

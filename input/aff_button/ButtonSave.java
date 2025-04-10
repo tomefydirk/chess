@@ -21,7 +21,7 @@ public class ButtonSave extends JButton{
     
     //impl --->[constructor]{
     public ButtonSave(Empl empl,JTextField path,int rows,int column){
-        super("Save");
+        super("Save 💾");
         this.row=rows;
         this.cols=column;
 

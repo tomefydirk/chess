@@ -12,7 +12,7 @@ public class ButtonUppload extends JButton{
 
         //impl --->[constructor]{
         public ButtonUppload(Empl empl,JTextField a,Table t){
-            super("Upload");
+            super("Upload 📥");
             this.empl=empl;
             addActionListener(_->{
                 String path=EmplLoader.path_saved(a.getText());
