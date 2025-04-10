@@ -16,7 +16,7 @@ public class Table extends JPanel{
     int padding_x=30;
     int decal=20;
     Empl empl;
-
+    Ecoute e;
     //impl --->[constructor]{
     public Table(){
         
@@ -31,6 +31,7 @@ public class Table extends JPanel{
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(cols*cell_size,rows*cell_size));
         this.empl=new Empl(rows,cols);
+        e=new Ecoute(this);
     }
     // }
    
