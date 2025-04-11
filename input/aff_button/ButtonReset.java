@@ -12,7 +12,7 @@ import aff.*;
 public class ButtonReset extends JButton{
         JPanel make_panel_save(Empl e,Table t,int row,int col){
             JPanel p=new JPanel();
-            JTextField text_field=new JTextField("default_save");
+            JTextField text_field=new JTextField("default_save",10);
             p.add(text_field);
             p.add(new ButtonSave(e, text_field, row, col));
             return p;
@@ -24,6 +24,7 @@ public class ButtonReset extends JButton{
         JButton ignore= new JButton("Ignorer");
         ignore.addActionListener(_->{
             e.reset();
+            t.setAll_selected(false);
             t.selected=null;
         }
             
@@ -41,7 +42,7 @@ public class ButtonReset extends JButton{
         panel.add(button);
 
         
-        JOptionPane.showMessageDialog(null, panel, "Enregistré", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, panel, "Attention !", JOptionPane.WARNING_MESSAGE);
         }
         //impl --->[constructor]{
         public ButtonReset(Empl e,Table t,int row,int col){

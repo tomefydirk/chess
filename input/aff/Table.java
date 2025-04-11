@@ -21,6 +21,16 @@ public class Table extends JPanel{
     Empl empl;
     
     Ecoute e;
+    boolean all_selected=false;
+
+
+    public boolean isAll_selected() {
+        return all_selected;
+    }
+
+    public void setAll_selected(boolean all_selected) {
+        this.all_selected = all_selected;
+    }
     public Point selected;
     //impl --->[constructor]{
     public Table(int rows,int cols){
@@ -70,10 +80,15 @@ public class Table extends JPanel{
                     }
                    
                 }
+                if(empl.get_est_pris(r, c) && all_selected){
+                 
+                        g2D.setColor(new Color(0,245,0,100));
+        
+                }
                 g2D.fillRect(c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
                     String img_path="/home/tomefy/Documents/prog/java/chess/img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
-
+                    
                     Image image = new ImageIcon(img_path).getImage();
                     g.drawImage(image,c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size,null);
                 }

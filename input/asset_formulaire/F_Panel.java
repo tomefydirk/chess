@@ -3,6 +3,7 @@ package asset_formulaire;
 import javax.swing.JPanel;
 import aff_button.ButtonReset;
 import aff_button.Button_Cursor_Reset;
+import aff_button.Button_select_all;
 import aff.Table;
 
 public class F_Panel extends JPanel{
@@ -10,6 +11,7 @@ public class F_Panel extends JPanel{
             super();
             add(new ButtonReset(t.getEmpl(), t,row,col));
             add(new Button_Cursor_Reset(t));
+            add(new Button_select_all(t));
             
     }
 }
