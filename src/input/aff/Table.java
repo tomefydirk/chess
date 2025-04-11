@@ -1,6 +1,7 @@
 package aff;
 
 import java.awt.*;
+import java.net.URL;
 
 import javax.swing.*;
 
@@ -93,7 +94,8 @@ public class Table extends JPanel{
 
                 g2D.fillRect(c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
-                    String img_path="/home/tomefy/Documents/prog/java/chess/img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
+                    String img_current_path="../img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
+                    URL img_path=getClass().getResource(img_current_path);
                     
                     Image image = new ImageIcon(img_path).getImage();
                     g.drawImage(image,c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size,null);
