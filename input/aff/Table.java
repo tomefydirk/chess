@@ -23,15 +23,7 @@ public class Table extends JPanel{
     Ecoute e;
     boolean all_selected=false;
 
-
-    public boolean isAll_selected() {
-        return all_selected;
-    }
-
-    public void setAll_selected(boolean all_selected) {
-        this.all_selected = all_selected;
-    }
-    public Point selected;
+    Point selected;
     //impl --->[constructor]{
     public Table(int rows,int cols){
         this.cols=cols;
@@ -124,5 +116,19 @@ public class Table extends JPanel{
         public Empl getEmpl() {
             return empl;
         }
+        public boolean isAll_selected() {
+            return all_selected;
+        }
+        public Point getSelected() {
+            return selected;
+        }
     // }
+    //impl --->[mut_field]{
+        public void setAll_selected(boolean all_selected) {
+            this.all_selected = all_selected;
+        }
+        public void setSelected(Point selected) {
+            this.selected = selected;
+        }
+    //}
 }

@@ -24,8 +24,6 @@ public class ButtonReset extends JButton{
         JButton ignore= new JButton("Ignorer");
         ignore.addActionListener(_->{
             e.reset();
-            t.setAll_selected(false);
-            t.selected=null;
             t.repaint();
         }
             

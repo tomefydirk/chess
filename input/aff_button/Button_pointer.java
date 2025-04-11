@@ -12,7 +12,7 @@ public class Button_pointer extends JButton{
                         this.addActionListener(_ -> {
                             int valX =Integer.parseInt(f.get_x_Field().getText()) ;
                             int valY =Integer.parseInt(f.get_y_Field().getText()) ;
-                            t.selected =new Point(valX,valY);
+                            t.setSelected(new Point(valX,valY));
                             t.repaint();
                            
                         });

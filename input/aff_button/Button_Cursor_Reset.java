@@ -8,7 +8,7 @@ public class Button_Cursor_Reset extends JButton{
         public Button_Cursor_Reset(Table t){
             super("Enlever cursor");
              this.addActionListener(_ -> {
-                t.selected=null;
+                t.setSelected(null);
                 t.repaint();
              });
         }
