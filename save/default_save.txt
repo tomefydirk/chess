@@ -1,14 +1,10 @@
-Position :{3,2};
-Piece :{k,blanc} ;
-break;
-
-Position :{0,5};
+Position :{0,3};
 Piece :{k,noir} ;
 break;
 
 -->
 blanc
-k : 0;
+k : 1;
 q : 1;
 c : 2;
 p :8;

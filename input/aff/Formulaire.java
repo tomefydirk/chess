@@ -39,7 +39,7 @@ public class Formulaire  extends JPanel{
        add(new C_Panel("x", "y", x, y));
        add(new D_Panel(this, t));
        add(new E_Panel(this, t,t.rows, t.cols));
-       add(new F_Panel(t));
+       add(new F_Panel(t,t.rows, t.cols));
        
         Ecoute e=new Ecoute(t,x,y);
         e.succes_mesage();
