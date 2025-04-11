@@ -26,6 +26,7 @@ public class ButtonReset extends JButton{
             e.reset();
             t.setAll_selected(false);
             t.selected=null;
+            t.repaint();
         }
             
         );
@@ -49,7 +50,7 @@ public class ButtonReset extends JButton{
             super("Reset ☠️");
             addActionListener(_->{
                 make_warning(e, t, row, col);
-                t.repaint();
+               
             });
         }
         // }

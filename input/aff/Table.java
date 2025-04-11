@@ -63,28 +63,42 @@ public class Table extends JPanel{
     }
 
     }
+    public void color_all_selected(Graphics2D g2D,int r,int c){
+        if(empl.get_est_pris(r, c) && all_selected){
+            if((c+r) %2==0){
+                g2D.setColor(new Color(0,245,0,100));
+            }else{
+                g2D.setColor(new Color(0,127,16,255));
+            }
+                
+
+        }
+    }
+    public void color_case(Graphics2D g2D,int r,int c){
+        if((c+r) %2==0){
+            g2D.setColor(new Color(227,198,181));
+        }else{
+            g2D.setColor(new Color(2,3,51,180));
+        }
+    }
+    public void color_selected_point(Graphics2D g2D,int r,int c){
+        if(selected!=null){
+            if(selected.x==c && selected.y==r){
+                g2D.setColor(new Color(245,0,0,100));
+            }
+           
+        }
+    }
     public void paintComponent(Graphics g ){
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g);
         for(int r=0;r<rows;r++){
             for(int c=0;c<cols;c++){
              
-                if((c+r) %2==0){
-                    g2D.setColor(new Color(227,198,181));
-                }else{
-                    g2D.setColor(new Color(2,3,51,180));
-                }
-                if(selected!=null){
-                    if(selected.x==c && selected.y==r){
-                        g2D.setColor(new Color(245,0,0,100));
-                    }
-                   
-                }
-                if(empl.get_est_pris(r, c) && all_selected){
-                 
-                        g2D.setColor(new Color(0,245,0,100));
-        
-                }
+                color_case(g2D, r, c);
+                color_selected_point(g2D, r, c);
+                color_all_selected(g2D, r, c);
+
                 g2D.fillRect(c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
                     String img_path="/home/tomefy/Documents/prog/java/chess/img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
