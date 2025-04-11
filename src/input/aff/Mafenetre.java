@@ -15,6 +15,10 @@ public class Mafenetre extends JFrame{
       this.setMinimumSize(new Dimension(1000,1000));
       this.setLocationRelativeTo(null);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+     // ImageIcon icon = new ImageIcon(getClass().getResource("/img/util/chess.png"));
+     // this.setIconImage(icon.getImage());
+      //System.out.println("Image chargée ? " + (icon.getImage() != null));
       this.t=new Table(row,cols);
       this.f=new Formulaire(t);
  

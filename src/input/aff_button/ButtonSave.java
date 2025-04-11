@@ -24,7 +24,8 @@ public class ButtonSave extends JButton{
 
     
     void make_success(){
-          ImageIcon icon = new ImageIcon("/home/tomefy/Documents/prog/java/chess/img/util/chill.png");
+         
+         ImageIcon icon = new ImageIcon(getClass().getResource("/img/util/chill.png"));
 
        
         JLabel imageLabel = new JLabel(icon);
@@ -54,7 +55,7 @@ public class ButtonSave extends JButton{
             val+=EmplSaver.init_qt_val(empl.getQ_blanc(), "blanc");
             val+="-->\n";
             val+=EmplSaver.init_qt_val(empl.getQ_noire(), "noir");         
-            System.out.println("Saved");
+          
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("/home/tomefy/Documents/prog/java/chess/save/"+path.getText()+".txt"))) {
             writer.write(val);

@@ -13,7 +13,7 @@ import fonction.Piece;
 
 public class ButtonAjouter extends JButton{
         void make_eror(){
-          ImageIcon icon = new ImageIcon(getClass().getResource("../img/util/sad.png"));
+          ImageIcon icon = new ImageIcon(getClass().getResource("/img/util/sad.png"));
 
        
         JLabel imageLabel = new JLabel(icon);
