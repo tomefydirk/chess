@@ -82,6 +82,18 @@ public class Table extends JPanel{
            
         }
     }
+    public void arranger_territoire_reine(Graphics2D g2D,int r,int c){
+        if(empl.getReine()!=null){
+            if(empl.dans_le_champ_reine(new Point(c,r))){
+                if((c+r) %2==0){
+                    g2D.setColor(new Color(245,0,0,100));
+                }else{
+                    g2D.setColor(new Color(0,245,0,100));
+                }
+             
+            }
+        }
+    }
     public void paintComponent(Graphics g ){
         Graphics2D g2D = (Graphics2D) g;
         super.paintComponent(g);
@@ -91,16 +103,21 @@ public class Table extends JPanel{
                 color_case(g2D, r, c);
                 color_selected_point(g2D, r, c);
                 color_all_selected(g2D, r, c);
-
+                arranger_territoire_reine(g2D, r, c);
                 g2D.fillRect(c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size);
                 if(empl.get_est_pris(r, c)){
                     String img_current_path="../img/"+empl.getP(r, c).getCouleur()+"/"+empl.getP(r, c).getPiece()+".png";
                     URL img_path=getClass().getResource(img_current_path);
-                    
                     Image image = new ImageIcon(img_path).getImage();
                     g.drawImage(image,c*cell_size+padding_x, r*cell_size+padding_y, cell_size, cell_size,null);
                 }
             }
+        }
+        for(int i=0;i<empl.getManger().size();i++){
+            String img_current_path="../img/"+empl.getManger().elementAt(i).getCouleur()+"/"+empl.getManger().elementAt(i).getPiece()+".png";
+            URL img_path=getClass().getResource(img_current_path);
+            Image image = new ImageIcon(img_path).getImage();
+            g.drawImage(image,rows*cell_size+padding_x, i*cell_size+padding_y, cell_size/2, cell_size/2,null);
         }
         afficher_repere(g2D);
     }
@@ -125,6 +142,18 @@ public class Table extends JPanel{
             return selected;
         }
     // }
+     public void rajouter_case(String cheminImage) {
+        ImageIcon originalIcon = new ImageIcon(cheminImage);
+        Image imageRedimensionnee = originalIcon.getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH);
+        ImageIcon iconRedimensionne = new ImageIcon(imageRedimensionnee);
+
+        JLabel label = new JLabel(iconRedimensionne);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        this.add(label);
+        this.revalidate();  
+        this.repaint();
+    }
     //impl --->[mut_field]{
         public void setAll_selected(boolean all_selected) {
             this.all_selected = all_selected;

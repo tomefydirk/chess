@@ -11,7 +11,7 @@ public class Mafenetre extends JFrame{
     //impl -->[constructor]{
     public Mafenetre(int row,int cols){
       super("Chess game");
-      this.setLayout(new GridLayout(1, 2));
+      this.setLayout(new GridLayout(1, 3));
       this.setMinimumSize(new Dimension(1000,1000));
       this.setLocationRelativeTo(null);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,9 +21,11 @@ public class Mafenetre extends JFrame{
       //System.out.println("Image chargée ? " + (icon.getImage() != null));
       this.t=new Table(row,cols);
       this.f=new Formulaire(t);
- 
+     /*  this.c=new Cage();
+      c.rajouter_case("/home/tomefy/Documents/prog/java/chess/src/output/img/noir/q.png");*/
     this.add(f);
     this.add(t);
+    
      this.setVisible(true);
         
     }

@@ -1,5 +1,7 @@
 package fonction;
 
+import java.awt.Point;
+import java.util.Vector;
 
 public class Empl {
     int rows=8;
@@ -10,9 +12,17 @@ public class Empl {
     Quantite q_noire;
     Quantite q_blanc;
 
+    Point reine;
+    Vector<Piece> manger;
+    public Vector<Piece> getManger() {
+        return manger;
+    }
     //impl --->[get_field]{
     public Quantite getQ_noire() {
         return q_noire;
+    }
+    public Point getReine() {
+        return reine;
     }
     public Quantite getQ_blanc() {
         return q_blanc;
@@ -51,10 +61,11 @@ public class Empl {
         }
         q_blanc=new Quantite();
         q_noire=new Quantite();
+        this.manger=new Vector<Piece>();
     }
     //impl --->[mut_field]{
     public void set_q(String couleur,char piece_indicator){
-        switch (couleur) {
+            switch (couleur) {
             case "noir":
                 q_noire.general_set(piece_indicator);
                 break;
@@ -65,7 +76,7 @@ public class Empl {
             default:
                 break;
         }
-    }
+    } 
     public void set_q(Piece p){
         switch (p.couleur) {
             case "noir":
@@ -93,9 +104,30 @@ public class Empl {
         }
     }
     public void set_Empl(int rows,int column,boolean est_pris,Piece p){
+        if(reine!=null){
+            if(Piece.dans_le_champ(reine, new Point(column,rows))){
+                this.manger.add(p);
+                this.set_q(p);
+                return;  
+            }
+        }
+        if(reine==null && p.piece=='q'){
+          reine=new Point(column,rows);  
+        }       
         this.est_pris[rows][column]=est_pris;
         this.p[rows][column]=p;
         this.set_q(p);
+      
+    }
+    public boolean dans_le_champ_reine(Point p){
+        if(this.reine==null){
+            return false;
+        }
+        if(Piece.dans_le_champ(reine,p)){
+            return true;
+        }else{
+            return false;
+        }
     }
     public void delete_Empl(int rows,int column,Piece p){
         this.est_pris[rows][column]=false;

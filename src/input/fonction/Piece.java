@@ -1,5 +1,5 @@
 package fonction;
-
+import java.awt.Point;
 public class Piece {
     char piece;
    
@@ -34,6 +34,21 @@ public class Piece {
     public void reset(){
         this.couleur="_";
         this.piece='_';
+    }
+    public static boolean dans_le_champ(Point reine,Point autre_piece){
+        if (reine.y == autre_piece.y) {
+            return true;
+        }
+
+        if (reine.x == autre_piece.x) {
+            return true;
+        }
+
+        if (Math.abs(reine.x - autre_piece.x) == Math.abs(reine.y - autre_piece.y)) {
+            return true;
+        }
+
+        return false;
     }
     // }
     
