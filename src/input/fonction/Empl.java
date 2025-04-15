@@ -13,6 +13,7 @@ public class Empl {
     Quantite q_blanc;
 
     Point reine;
+    String couleur;
     Vector<Piece> manger;
     public Vector<Piece> getManger() {
         return manger;
@@ -105,14 +106,22 @@ public class Empl {
     }
     public void set_Empl(int rows,int column,boolean est_pris,Piece p){
         if(reine!=null){
-            if(Piece.dans_le_champ(reine, new Point(column,rows))){
+            if(Piece.dans_le_champ(reine, new Point(column,rows)) && !p.couleur.equalsIgnoreCase(couleur)){
+                delete_Empl(reine.y, reine.x,new Piece('q', this.couleur) );
                 this.manger.add(p);
                 this.set_q(p);
+                reine=new Point(column,rows);
+                delete_Empl(rows, column, p);
+                System.out.println(" "+reine.y+" "+reine.x);
+               
+                set_Empl(rows, column, true,new Piece('q', this.couleur) );
                 return;  
             }
         }
         if(reine==null && p.piece=='q'){
           reine=new Point(column,rows);  
+          this.couleur=p.couleur;
+          
         }       
         this.est_pris[rows][column]=est_pris;
         this.p[rows][column]=p;
@@ -144,6 +153,8 @@ public class Empl {
             }
             q_blanc.reset();
             q_noire.reset();
+            reine=null;
+            manger=new Vector<Piece>();
         }  
     //}
   

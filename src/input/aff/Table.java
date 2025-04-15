@@ -117,7 +117,7 @@ public class Table extends JPanel{
             String img_current_path="../img/"+empl.getManger().elementAt(i).getCouleur()+"/"+empl.getManger().elementAt(i).getPiece()+".png";
             URL img_path=getClass().getResource(img_current_path);
             Image image = new ImageIcon(img_path).getImage();
-            g.drawImage(image,rows*cell_size+padding_x, i*cell_size+padding_y, cell_size/2, cell_size/2,null);
+            g.drawImage(image,rows*cell_size+padding_x, i*cell_size/2+padding_y, cell_size/2, cell_size/2,null);
         }
         afficher_repere(g2D);
     }
